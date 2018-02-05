@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator">
+
+    <translate
+        android:duration="2000"
+        android:fromXDelta="0"
+        android:fromYDelta="30"
+        android:toXDelta="0"
+        android:toYDelta="600" />
+
+    <!--
+    fromXDelta 为动画起始时的x坐标
+    fromYDelta 为动画起始时的y坐标
+    toXDelta   为动画结束时的x坐标
+    toYDelta   为动画结束时的y坐标
+    duration   动画持续时间（ms）
+    -->
+</set>

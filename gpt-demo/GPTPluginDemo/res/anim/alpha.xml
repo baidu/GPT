@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+    <alpha
+        android:duration="2000"
+        android:fillBefore="true"
+        android:fromAlpha="0.1"
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:repeatCount="1"
+        android:repeatMode="reverse"
+        android:startOffset="500"
+        android:toAlpha="1.0"
+        android:zAdjustment="bottom"
+
+        >
+
+        <!--
+        fromAlpha 动画起始时透明度  (0.0 表示完全透明  1.0表示完全不透明)
+        toAlpha   动画结束时透明度  ( 0.0 表示完全透明  1.0表示完全不透明)
+        duration  动画持续时间 (ms单位)
+        interpolator 指定一个动画的插入器  
+        					有一些常见的插入器
+							accelerate_decelerate_interpolator
+							加速-减速 动画插入器
+							accelerate_interpolator
+							加速-动画插入器
+							decelerate_interpolator
+							减速- 动画插入器
+							其他的属于特定的动画效果
+		
+        repeatCount  动画重复次数
+        repeatMode   定义重复的行为 (restart 好像是默认效果; reverse 重复第二次时是倒退动画的效果 )
+        startOffset  动画之间的时间间隔，从上次动画停多少时间开始执行下个动画
+        zAdjustment  定义动画的Z Order的改变
+        -->
+    </alpha>
+
+</set>

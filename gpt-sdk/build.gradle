@@ -1,0 +1,120 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 100
+        versionName "6.0"
+    }
+    buildTypes {
+        release {
+            debuggable false
+            // GPT已准备对外开源,为方便定位问题,关闭相关代码混淆。
+            minifyEnabled false
+            // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+version = android.defaultConfig.versionName
+
+// GPT开放给插件的接口Jar包
+task generateInterfaceJar(type: Jar, dependsOn: [build]) {
+    from "$buildDir/intermediates/classes/release"
+    include "com/baidu/android/gporter/rmi/*.class"
+    include "com/baidu/android/gporter/hostapi/*.class"
+    include "com/baidu/android/gporter/stat/*.class"
+
+    destinationDir = file('./output')
+    manifest {
+        attributes 'Manifest-Version': version,
+                'Release-Date': new Date().format('yyyy-MM-dd')
+    }
+    baseName = "GreedyPorter-interface"
+}
+
+// 生成指定文件的javadoc
+task generateGPTApiDocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    destinationDir = file("./output/docs")
+    failOnError false
+    exclude "*.java"
+    include "com/baidu/android/gporter/api/**"
+    include "com/baidu/android/gporter/pm/**"
+    include "com/baidu/android/gporter/rmi/**"
+    options.encoding = 'UTF-8'
+}
+
+task buildSdk(type: Copy, dependsOn: [generateInterfaceJar,generateGPTApiDocs]) {
+    from("$buildDir/outputs/aar/") {
+        include "${project.getName()}-release.aar"
+    }
+    from("$buildDir/outputs/mapping/release") {
+        include "mapping.txt"
+    }
+    into(file("./output/"))
+    rename ("${project.getName()}-release.aar", "GreedyPorter-${version}.aar")
+    rename ("mapping.txt", "GreedyPorter-${version}-mapping.txt")
+
+}
+
+// 生成 gpt-sdk 的AAR相关文件,并上传到共享Maven服务器 TODO 外部产品接入时可直接删改。
+uploadArchives {
+    repositories {
+        mavenDeployer {
+
+            repository(url: RELEASE_REPOSITORY_URL) {
+                authentication(userName: MOBILE_USERNAME, password: MOBILE_PASSWORD)
+            }
+//            repository(url: SNAPSHOT_REPOSITORY_URL) {
+//                authentication(userName: MOBILE_USERNAME, password: MOBILE_PASSWORD)
+//            }
+
+            pom.project {
+                version version
+                artifactId "GreedyPorter"
+                groupId POM_GROUP
+                description "GreedyPorter SDK"
+            }
+
+        }
+    }
+}
+artifacts {
+    archives file: file("./output/GreedyPorter-${version}.aar"), name: 'GreedyPorter', type: 'aar',classifier: 'release'
+    archives file: file("./output/GreedyPorter-interface-${version}.jar"), name: 'GreedyPorter-interface', type: 'jar',classifier: 'interface'
+}
+
+
+

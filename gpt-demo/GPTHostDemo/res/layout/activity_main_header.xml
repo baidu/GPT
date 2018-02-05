@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--GPTHostDemo主页面的头部View布局-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/function_bg"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/scan_load_plugin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:background="@drawable/funticon_item_bg"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/scan_load_plugin"
+        android:textColor="#000000"
+        android:textSize="@dimen/function_button_size" />
+
+    <Button
+        android:id="@+id/remote_call"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:layout_marginTop="@dimen/funciton_margin"
+        android:background="@drawable/funticon_item_bg"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/remote_call"
+        android:textColor="#000000"
+        android:textSize="@dimen/function_button_size"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/test_receiver"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:layout_marginTop="@dimen/funciton_margin"
+        android:background="@drawable/funticon_item_bg"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/test_receiver"
+        android:textColor="#000000"
+        android:textSize="@dimen/function_button_size"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/get_context"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:layout_marginTop="@dimen/funciton_margin"
+        android:background="@drawable/funticon_item_bg"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/get_context"
+        android:textColor="#000000"
+        android:textSize="@dimen/function_button_size"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/hook_compare"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:layout_marginTop="@dimen/funciton_margin"
+        android:background="@drawable/funticon_item_bg"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/hook_compare"
+        android:textColor="#000000"
+        android:textSize="@dimen/function_button_size"
+        android:visibility="gone" />
+
+</LinearLayout>

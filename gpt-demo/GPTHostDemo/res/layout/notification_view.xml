@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--通知的Layout,插件Demo测试时可能使用,所以暂不可删除。-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notification_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="title"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="content"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>

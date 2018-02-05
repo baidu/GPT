@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+
+    <translate
+        android:duration="2000"
+        android:fromXDelta="150"
+        android:fromYDelta="30"
+        android:toXDelta="150"
+        android:toYDelta="300" />
+
+    <!--
+    fromXDelta 为动画起始时的x坐标
+    fromYDelta 为动画起始时的y坐标
+    toXDelta   为动画结束时的x坐标
+    toYDelta   为动画结束时的y坐标
+    duration   动画持续时间（ms）
+    -->
+</set>

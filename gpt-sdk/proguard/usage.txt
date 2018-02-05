@@ -1,0 +1,129 @@
+com.baidu.apkruntime.ApkInstaller:
+    private static final java.lang.String PLUGIN_PATH
+    private static final java.lang.String APK_SUFFIX
+    private static final int INSTALL_BUF_SIZE
+com.baidu.apkruntime.BuildConfig
+com.baidu.apkruntime.ProxyEnvironment:
+    public static final java.lang.String EXTRA_TARGET_ACTIVITY
+    public static final java.lang.String EXTRA_TARGET_SERVICE
+    59:60:public static void exitProxy()
+    75:75:public android.content.res.AssetManager getTargetAssetManager()
+    79:79:public android.content.res.Resources$Theme getTargetTheme()
+com.baidu.apkruntime.R
+com.baidu.apkruntime.R$attr
+com.baidu.apkruntime.R$color
+com.baidu.apkruntime.R$dimen
+com.baidu.apkruntime.R$drawable
+com.baidu.apkruntime.R$id
+com.baidu.apkruntime.R$layout
+com.baidu.apkruntime.R$string
+com.baidu.apkruntime.R$style
+com.baidu.apkruntime.adapter.ActivityProxyAdapter:
+    public abstract void proxyDump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])
+    public abstract void proxyOnCreate(android.os.Bundle)
+    public abstract void proxyOnRestart()
+    public abstract void proxyStartActivityFromFragment(android.app.Fragment,android.content.Intent,int)
+    public abstract void proxyStartIntentSenderFromChild(android.app.Activity,android.content.IntentSender,int,android.content.Intent,int,int,int)
+com.baidu.apkruntime.adapter.ApplicationProxyAdapter
+com.baidu.apkruntime.adapter.ListActivityProxyAdapter:
+    public abstract void proxyOnListItemClick(android.widget.ListView,android.view.View,int,long)
+com.baidu.apkruntime.adapter.ServiceProxyAdapter:
+    public abstract void proxyDump(java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])
+    public abstract void proxyOnRebind(android.content.Intent)
+com.baidu.apkruntime.ias.IASActivity:
+    public static final int DEFAULT_KEYS_DIALER
+    public static final int DEFAULT_KEYS_DISABLE
+    public static final int DEFAULT_KEYS_SEARCH_GLOBAL
+    public static final int DEFAULT_KEYS_SEARCH_LOCAL
+    public static final int DEFAULT_KEYS_SHORTCUT
+    public static final int RESULT_CANCELED
+    public static final int RESULT_FIRST_USER
+    public static final int RESULT_OK
+    91:92:public final void dismissDialog(int)
+    123:125:public void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])
+    152:152:public android.app.Activity getActivity()
+    156:161:public final com.baidu.apkruntime.ias.IASApplication getApplication()
+    182:182:public android.content.ComponentName getComponentName()
+    230:230:public final android.app.Activity getParent()
+    250:250:public final java.lang.CharSequence getTitle()
+    254:254:public final int getTitleColor()
+    258:258:public final int getVolumeControlStream()
+    290:290:public final boolean isChild()
+    305:306:public final android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)
+    368:369:protected void onCreate(android.os.Bundle)
+    510:511:public void onRestart()
+    561:561:protected void onUserLeaveHint()
+    599:600:public final void removeDialog(int)
+    603:603:public final boolean requestWindowFeature(int)
+    607:608:public final void runOnUiThread(java.lang.Runnable)
+    630:631:public final void setDefaultKeyMode(int)
+    634:635:public final void setFeatureDrawable(int,android.graphics.drawable.Drawable)
+    638:639:public final void setFeatureDrawableAlpha(int,int)
+    642:643:public final void setFeatureDrawableResource(int,int)
+    646:647:public final void setFeatureDrawableUri(int,android.net.Uri)
+    658:659:public final void setProgress(int)
+    662:663:public final void setProgressBarIndeterminate(boolean)
+    666:667:public final void setProgressBarIndeterminateVisibility(boolean)
+    670:671:public final void setProgressBarVisibility(boolean)
+    678:679:public final void setResult(int)
+    682:683:public final void setResult(int,android.content.Intent)
+    686:687:public final void setSecondaryProgress(int)
+    706:707:public final void setVolumeControlStream(int)
+    710:711:public final void showDialog(int)
+    737:739:public void startActivityFromFragment(android.app.Fragment,android.content.Intent,int)
+com.baidu.apkruntime.ias.IASContextWrapper:
+    12:12:public java.lang.String getPackageNameSuper()
+com.baidu.apkruntime.ias.IASListActivity:
+    35:36:protected void onListItemClick(android.widget.ListView,android.view.View,int,long)
+com.baidu.apkruntime.ias.IASService:
+    public static final int START_CONTINUATION_MASK
+    public static final int START_FLAG_REDELIVERY
+    public static final int START_FLAG_RETRY
+    public static final int START_NOT_STICKY
+    public static final int START_REDELIVER_INTENT
+    public static final int START_STICKY
+    43:44:protected void dump(java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])
+    54:58:public final com.baidu.apkruntime.ias.IASApplication getApplication()
+    73:73:public android.app.Service getService()
+    98:99:public void onRebind(android.content.Intent)
+    140:141:public final void startForeground(int,android.app.Notification)
+    150:151:public final void stopSelf()
+    155:156:public final void stopSelf(int)
+    160:160:public final boolean stopSelfResult(int)
+com.baidu.apkruntime.plug.ApkTargetMapping:
+    58:58:public android.content.pm.PermissionInfo[] getPermissions()
+com.baidu.apkruntime.plug.TargetMapping:
+    public abstract android.content.pm.PermissionInfo[] getPermissions()
+com.baidu.apkruntime.proxy.ActivityProxy:
+    735:737:public void proxyDump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])
+    924:925:public void proxyOnCreate(android.os.Bundle)
+    1043:1044:public void proxyOnRestart()
+    1192:1193:public void proxyStartActivityFromFragment(android.app.Fragment,android.content.Intent,int)
+    1217:1219:public void proxyStartIntentSenderFromChild(android.app.Activity,android.content.IntentSender,int,android.content.Intent,int,int,int)
+com.baidu.apkruntime.proxy.ApplicationProxy:
+    14:14:public com.baidu.apkruntime.ias.IASApplication getTarget()
+com.baidu.apkruntime.proxy.PreferenceActivityProxy:
+    915:916:public void proxyDump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])
+    1196:1197:public void proxyOnCreate(android.os.Bundle)
+    1299:1300:public void proxyOnListItemClick(android.widget.ListView,android.view.View,int,long)
+    1375:1376:public void proxyOnRestart()
+    1573:1574:public void proxyStartActivityFromFragment(android.app.Fragment,android.content.Intent,int)
+    1596:1598:public void proxyStartIntentSenderFromChild(android.app.Activity,android.content.IntentSender,int,android.content.Intent,int,int,int)
+com.baidu.apkruntime.proxy.ServiceProxy:
+    public static final java.lang.String META_DATA_NAME
+    111:112:public void proxyDump(java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])
+    135:136:public void proxyOnRebind(android.content.Intent)
+com.baidu.apkruntime.test.ListApkFragment$AppInfo:
+    158:158:public java.lang.String getAppName()
+    162:162:public android.graphics.drawable.Drawable getAppIcon()
+com.baidu.apkruntime.util.JavaCalls:
+    private static final java.lang.String LOG_TAG
+    74:79:public static varargs java.lang.Object callStaticMethod(java.lang.String,java.lang.String,java.lang.Object[])
+    142:147:public static varargs java.lang.Object callStaticMethodOrThrow(java.lang.String,java.lang.String,java.lang.Object[])
+    155:159:public static varargs java.lang.Object callStaticMethodOrThrow(java.lang.Class,java.lang.String,java.lang.Object[])
+    164:169:public static varargs java.lang.Object getInstance(java.lang.Class,java.lang.Object[])
+    178:180:public static varargs java.lang.Object getInstanceOrThrow(java.lang.Class,java.lang.Object[])
+    185:189:public static varargs java.lang.Object getInstance(java.lang.String,java.lang.Object[])
+    198:198:public static varargs java.lang.Object getInstanceOrThrow(java.lang.String,java.lang.Object[])
+com.baidu.apkruntime.util.JavaCalls$JavaParam:
+    40:43:public JavaCalls$JavaParam(java.lang.Class,java.lang.Object)

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+
+    <rotate
+        android:duration="1000"
+        android:fromDegrees="0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toDegrees="+360" />
+
+    <!--
+    fromDegrees 为动画起始时物件的角度
+    toDegrees 属性为动画结束时物件旋转的角度 可以大于360度
+    pivotX pivotY为动画相对于物件的X、Y坐标的开始位-->
+
+</set>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pure_white">#ffffff</color>
+    <color name="function_bg">#e8e8e8</color>
+    <color name="card_pressed">#e8e8e8</color>
+</resources>

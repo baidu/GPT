@@ -1,0 +1,123 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.baidu.porter">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <!-- gpt安装service，hostapp必须在manifest中声明此service，此service执行完会自动退出，运行在独立进程。 -->
+        <service
+            android:name="com.baidu.android.gporter.install.ApkInstallerService"
+            android:exported="false"
+            android:process=":gptInstaller" />
+
+        <service
+            android:name="com.baidu.android.gporter.MainProcessService"
+            android:exported="false" />
+
+        <service
+            android:name="com.baidu.android.gporter.GPTProcessService"
+            android:process=":gpt"></service>
+
+        <!-- 代理组件 -->
+        <activity
+            android:name="com.baidu.android.gporter.proxy.activity.ActivityProxy"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|keyboard"
+            android:exported="true" />
+
+        <activity
+            android:name="com.baidu.android.gporter.proxy.activity.ActivityProxyTranslucent"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|keyboard"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service android:name="com.baidu.android.gporter.proxy.service.ServiceProxy" />
+
+        <activity
+            android:name="com.baidu.android.gporter.proxy.activity.RootActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|keyboard"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver
+            android:name="com.baidu.android.gporter.proxy.BroadcastReceiverProxy"
+            android:exported="true" />
+
+        <provider
+            android:name="com.baidu.android.gporter.proxy.ContentProviderProxy"
+            android:authorities="${applicationId}_com.baidu.android.gpt.ContentProviderProxy"
+            android:exported="false" />
+
+        <!-- 独立进程的代理组件 -->
+        <activity
+            android:name="com.baidu.android.gporter.proxy.activity.ActivityProxyExt"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|keyboard"
+            android:exported="true"
+            android:process=":gpt" />
+
+        <activity
+            android:name="com.baidu.android.gporter.proxy.activity.ActivityProxyTranslucentExt"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|keyboard"
+            android:exported="true"
+            android:process=":gpt"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity
+            android:name="com.baidu.android.gporter.proxy.activity.ShortcutActivityProxy"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|keyboard"
+            android:exported="true"
+            android:process=":gpt"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service
+            android:name="com.baidu.android.gporter.proxy.service.ServiceProxyExt"
+            android:process=":gpt" />
+
+
+        <receiver
+            android:name="com.baidu.android.gporter.proxy.BroadcastReceiverProxyExt"
+            android:exported="true"
+            android:process=":gpt" />
+
+        <provider
+            android:name="com.baidu.android.gporter.proxy.ContentProviderProxyExt"
+            android:authorities="${applicationId}_com.baidu.android.gpt.ContentProviderProxyExt"
+            android:exported="false"
+            android:process=":gpt" />
+
+        <!--gpt ext 进程 -->
+        <!--<activity-->
+        <!--android:exported="true"-->
+        <!--android:name="com.baidu.android.gporter.proxy.activity.ActivityProxyGptExt"-->
+        <!--android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|keyboard"-->
+        <!--android:process=":gptext" />-->
+
+        <!--<activity-->
+        <!--android:exported="true"-->
+        <!--android:name="com.baidu.android.gporter.proxy.activity.ActivityProxyTranslucentGptExt"-->
+        <!--android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|keyboard"-->
+        <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+        <!--android:process=":gptext" />-->
+
+        <!--<service android:name="com.baidu.android.gporter.proxy.service.ServiceProxyGptExt"-->
+        <!--android:process=":gptext"/>-->
+
+        <!--<receiver-->
+        <!--android:name="com.baidu.android.gporter.proxy.BroadcastReceiverProxyGptExt"-->
+        <!--android:exported="true"-->
+        <!--android:process=":gptext" />-->
+
+        <!--<service android:name="com.baidu.android.gporter.GPTExtProcessService" android:process=":gptext" />-->
+
+        <!--<provider android:name="com.baidu.android.gporter.proxy.ContentProviderProxyGptExt"-->
+        <!--android:authorities="${applicationId}_com.baidu.android.gpt.ContentProviderProxyExt"-->
+        <!--android:process=":gptext"-->
+        <!--android:exported="false"-->
+        <!--/>-->
+
+    </application>
+
+</manifest>

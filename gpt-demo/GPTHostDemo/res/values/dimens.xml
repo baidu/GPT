@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="margin_activity_horizontal">0dp</dimen>
+    <dimen name="margin_activity_vertical">0dp</dimen>
+    <dimen name="margin_normal">6dp</dimen>
+    <dimen name="padding_normal">10dp</dimen>
+    <dimen name="app_name_size">23dp</dimen>
+    <dimen name="app_package_size">15dp</dimen>
+    <dimen name="function_button_height">50dp</dimen>
+    <dimen name="function_button_size">26dp</dimen>
+    <dimen name="funciton_margin">1dp</dimen>
+</resources>

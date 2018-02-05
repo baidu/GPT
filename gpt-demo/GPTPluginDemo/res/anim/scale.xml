@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+
+    <scale
+        android:duration="700"
+        android:fillAfter="false"
+        android:fromXScale="0.0"
+        android:fromYScale="0.0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="10"
+        android:startOffset="700"
+        android:toXScale="3.4"
+        android:toYScale="3.4" />
+
+    <!--
+    fromXScale[float]
+    fromYScale[float]  为动画起始时，X、Y坐标上的伸缩尺寸;0.0表示收缩到没有 ;1.0表示正常无伸缩. 值小于1.0表示收缩. 值大于1.0表示放大toXScale [float]
+    toYScale[float]    为动画结束时，X、Y坐标上的伸缩尺寸pivotX[float]
+    pivotY[float]      为动画相对于物件的X、Y坐标的开始位置属性值说明：从0%-100%中取值，50%为物件的X或Y方向坐标上的中点位置
+    -->
+
+</set>
