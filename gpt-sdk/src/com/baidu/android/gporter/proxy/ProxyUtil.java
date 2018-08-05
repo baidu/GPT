@@ -25,9 +25,25 @@ import android.net.wifi.IWifiManager;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.os.storage.IMountService;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.autofill.IAutoFillManager;
+
+import com.baidu.android.gporter.stat.ExceptionConstants;
+import com.baidu.android.gporter.stat.GPTProxyAlarmException;
+import com.baidu.android.gporter.stat.GPTProxyAutoFillException;
+import com.baidu.android.gporter.stat.GPTProxyWifiException;
+import com.baidu.android.gporter.stat.ReportManger;
+import com.baidu.android.gporter.util.Constants;
+import com.baidu.android.gporter.util.JavaCalls;
+import com.baidu.android.gporter.util.Util;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.HashMap;
 
 import com.baidu.android.gporter.stat.ExceptionConstants;
 import com.baidu.android.gporter.stat.GPTProxyAlarmException;
@@ -146,7 +162,13 @@ public final class ProxyUtil {
 
                                         ReportManger.getInstance().onExceptionByLogService(context, "", sb.toString(),
                                                 ExceptionConstants.TJ_78730013);
-                                        throw new GPTProxyWifiException(message, e);
+
+                                        if (e instanceof RemoteException) { // 为便于开者捕获处理RemoteException，直接抛出。
+                                            throw e;
+                                        } else {
+                                            throw new GPTProxyWifiException(message, e);
+                                        }
+
                                     }
                                     return result;
                                 }
@@ -189,6 +211,69 @@ public final class ProxyUtil {
     public static void replaceLocationManager(Context context) {
         LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         JavaCalls.setField(lm, "mContext", Util.getHostContext(context));
+    }
+
+    /**
+     * 拦截IAutoFillManager
+     *
+     * @param context
+     */
+    public static void replaceAutoFillManager(final Context context) {
+        if (Build.VERSION.SDK_INT < 26) { // 8.0之前什么都不做
+            return;
+        }
+
+        try {
+            final AutoFillManagerWorker autoFillManagerWork = new AutoFillManagerWorker();
+            autoFillManagerWork.mHostContext = Util.getHostContext(context);
+            Object autofill = context.getSystemService("autofill");
+            if (autofill == null) {
+                return;
+            }
+            autoFillManagerWork.mTarget = (IAutoFillManager) JavaCalls.getField(autofill, "mService");
+            if (autoFillManagerWork.mTarget == null) {
+                return;
+            }
+
+            Class[] interfaces = new Class<?>[]{Class.forName(Constants.IAUTO_FILL_MANAGER_CLASS)};
+            Object autoFillManagerProxy = Proxy.newProxyInstance(context.getClassLoader(),
+                    interfaces, new InvocationHandler() {
+
+                        @Override
+                        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                            Object result = null;
+                            try {
+                                MethodProxy.MethodInfo methodInfo = MethodProxy.getMethodInfo(autoFillManagerWork,
+                                        Constants.IAUTO_FILL_MANAGER_CLASS, method);
+
+                                if (methodInfo != null) {
+                                    result = methodInfo.process(args);
+                                } else {
+                                    result = method.invoke(autoFillManagerWork.mTarget, args);
+                                }
+                            } catch (Exception e) {
+                                StringBuilder sb = new StringBuilder();
+                                String message = Util.printlnMethod("### IAutoFillManager invoke : ", method, args);
+                                sb.append(Util.getCallStack(e));
+
+                                ReportManger.getInstance().onExceptionByLogService(context, "", sb.toString(),
+                                        ExceptionConstants.TJ_78730017);
+
+                                if (e instanceof RemoteException) { // 为便于开者捕获处理RemoteException，直接抛出。
+                                    throw e;
+                                } else {
+                                    throw new GPTProxyAutoFillException(message, e);
+                                }
+
+                            }
+                            return result;
+                        }
+                    });
+
+            JavaCalls.setField(autofill, "mService", autoFillManagerProxy);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -236,7 +321,13 @@ public final class ProxyUtil {
 
                                 ReportManger.getInstance().onExceptionByLogService(context, "", sb.toString(),
                                         ExceptionConstants.TJ_78730015);
-                                throw new GPTProxyAlarmException(message, e);
+
+                                if (e instanceof RemoteException) { // 为便于开者捕获处理RemoteException，直接抛出。
+                                    throw e;
+                                } else {
+                                    throw new GPTProxyAlarmException(message, e);
+                                }
+
                             }
                             return result;
                         }
@@ -369,6 +460,10 @@ public final class ProxyUtil {
         // 7.0 以上的手机才需要hook AlarmManger，增加条件判断，优化插件启动时间
         if (Build.VERSION.SDK_INT >= 24) {
             ProxyUtil.replaceAlarmManager(context);
+        }
+
+        if (Build.VERSION.SDK_INT >= 26) {
+            ProxyUtil.replaceAutoFillManager(context);
         }
 //        ProxyUtil.replaceMountService(context);
     }
