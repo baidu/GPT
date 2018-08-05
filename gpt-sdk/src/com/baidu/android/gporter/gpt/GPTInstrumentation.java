@@ -385,9 +385,16 @@ public class GPTInstrumentation extends Instrumentation {
      */
     public static File[] getTargetExternalCacheDir(Context hostContext, String pluginPkgName) {
 
-        File hostExternalFilesDir = hostContext.getExternalFilesDir(null);
+        // 解决OPPO特殊手机4.4兼容问题
+        File hostExternalFilesDir;
+        try {
+            hostExternalFilesDir = hostContext.getExternalFilesDir(null);
+        } catch (Exception e) {
+            return null;
+        }
 
         File targetExternalCacheDir = Util.buildPath(hostExternalFilesDir, pluginPkgName, "cache");
+
         if (!targetExternalCacheDir.exists()) {
             targetExternalCacheDir.mkdirs();
         }
