@@ -7,7 +7,7 @@
 - CSDN：[http://blog.csdn.net/dffd001](http://blog.csdn.net/dffd001)
 - 简书：[https://www.jianshu.com/u/2306ba8f1c59](https://www.jianshu.com/u/2306ba8f1c59)
 
-# 开源代码 
+# 开源代码
 - 登录GitHub帐号直接Fork后面项目地址：[https://github.com/baidu/GPT](https://github.com/baidu/GPT)
 
 
