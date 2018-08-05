@@ -1,5 +1,6 @@
 # 项目Owner：刘海涛 
 
+# 技术讨论
 
 
 ## GreedyPorter(GPT)插件系统
