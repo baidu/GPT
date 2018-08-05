@@ -201,6 +201,8 @@ GPTPackageManager.getInstance(getActivity()).installBuildinApps();
 - GPT插件系统中的ActivityProxy和BroadcastReceiverProxy等设置了android:exported="true"的对外导出组件可能存在如下安全风险：
 - 由于这类组件可接受外部输入参数：targetPackageName、targetClassName以便调起复杂可扩展的宿主插件具体组件，攻击者也可通过以上参数任意调用插件中的所有Activity、Service、Receiver等组件，并且能够传递intent参数。
 - 因此建议GPT的宿主和插件接入方都根据实际产品业务需求和具体宿主插件组件逻辑，增加对应白名单安全配置机制，以便对内部宿主插件中允许被外部调用的组件等增加白名单配置匹配和安全检查处理机制。
+
+
 ## 高级通信
 
 - 大部分插件通信都可以通过标准方法和指定插件包名,组件类名的Intent参数完成。例如:
