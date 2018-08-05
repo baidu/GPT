@@ -199,7 +199,7 @@ GPTPackageManager.getInstance(getActivity()).installBuildinApps();
 
 - AccountManager、GMS接口、Class.getInputStream()等暂不支持。
 
-## 风险
+## 
 
 - GPT插件系统中的ActivityProxy和BroadcastReceiverProxy等设置了android:exported="true"的对外导出组件可能存在如下安全风险：
 - 由于这类组件可接受外部输入参数：targetPackageName、targetClassName以便调起复杂可扩展的宿主插件具体组件，攻击者也可通过以上参数任意调用插件中的所有Activity、Service、Receiver等组件，并且能够传递intent参数。
