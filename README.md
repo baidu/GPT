@@ -10,7 +10,6 @@
 # 开源代码
 - 登录GitHub帐号直接Fork后面项目地址：[https://github.com/baidu/GPT](https://github.com/baidu/GPT)
 
-
 # 项目简介
 
 ## GreedyPorter(GPT)插件系统
