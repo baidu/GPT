@@ -517,6 +517,11 @@ public class PackageManagerWorker extends InterfaceProxy {
                 categories = intent.getCategories().toArray(new String[]{});
             }
             String action = intent.getAction();
+
+            if (TargetManager.getInstance(hostCtx).getTargetMapping(pkgName) == null) {
+                return rInfos;
+            }
+
             Vector<IntentInfo> intentInfos =
                     TargetManager.getInstance(hostCtx).getTargetMapping(pkgName).getIntentInfos();
             rInfos = new ArrayList<ResolveInfo>();
