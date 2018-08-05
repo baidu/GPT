@@ -69,4 +69,17 @@
         android:textSize="@dimen/function_button_size"
         android:visibility="gone" />
 
+    <Button
+        android:id="@+id/androidp_test"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/function_button_height"
+        android:layout_marginTop="@dimen/funciton_margin"
+        android:background="@drawable/funticon_item_bg"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/androidp_compare"
+        android:textColor="#000000"
+        android:textSize="@dimen/function_button_size"
+        android:visibility="gone" />
+
 </LinearLayout>
