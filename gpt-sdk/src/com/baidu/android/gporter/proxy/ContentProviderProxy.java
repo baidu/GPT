@@ -265,7 +265,7 @@ public class ContentProviderProxy extends ContentProvider {
             return;
         }
 
-        SharedPreferences sp = hostContext.getSharedPreferences(SP_FILENAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = hostContext.getSharedPreferences(SP_FILENAME, Context.MODE_MULTI_PROCESS);
 
         Map<String, String> providers = (Map<String, String>) sp.getAll();
 
