@@ -32,7 +32,7 @@ public final class Constants {
     /**
      * SDK的版本号 TODO 升级版本时需同步修改此值和脚本配置以保持一致。
      */
-    public static final String VERSON = "6.0";
+    public static final String VERSON = "6.2";
 
     /**
      * 插件未继承application时，默认的application名字
@@ -83,6 +83,10 @@ public final class Constants {
      * android.app.IAlarmManager
      */
     public static final String IALARM_MANAGERR_CLASS = "android.app.IAlarmManager";
+    /**
+     * android.view.autofill.IAutoFillManager
+     */
+    public static final String IAUTO_FILL_MANAGER_CLASS = "android.view.autofill.IAutoFillManager";
     /**
      * android.os.ServiceManager
      */
