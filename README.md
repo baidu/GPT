@@ -124,6 +124,7 @@ loadTargetAndRun(final Context context, final Intent intent)
 
 # 开发测试
 
+
 ## 插件开发
 
 - 基于GPT的插件开发比较简单，就是一个普通的apk，在排除特殊限制的情况下可以独立运行也可以插件方式运行，代码可以完全共用一套。
