@@ -87,5 +87,9 @@ public class ExceptionConstants {
      * 通知栏管理 hook出错
      */
     public static final String TJ_78730016 = "78730016";
+    /**
+     * AutoManager hook 异常
+     */
+    public static final String TJ_78730017 = "78730017";
 }
 
