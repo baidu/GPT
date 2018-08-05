@@ -4,6 +4,8 @@
 - Hi：dffd001
 - QQ群：703661841
 
+- CSDN：[http://blog.csdn.net/dffd001](http://blog.csdn.net/dffd001)
+
 # 项目简介
 
 ## GreedyPorter(GPT)插件系统
