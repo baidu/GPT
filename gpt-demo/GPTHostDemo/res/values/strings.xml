@@ -7,4 +7,5 @@
     <string name="test_receiver">Test Receiver</string>
     <string name="get_context">Get Context</string>
     <string name="hook_compare">Hook类方法对比</string>
+    <string name="androidp_compare">Android P 类方法调用测试</string>
 </resources>
