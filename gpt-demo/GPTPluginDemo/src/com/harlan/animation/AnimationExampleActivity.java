@@ -60,6 +60,8 @@ import com.example.hellojni.HelloJni;
 import java.io.File;
 import java.util.List;
 
+import static com.harlan.animation.R.layout.test;
+
 /**
  * AnimationExampleActivity
  *
@@ -294,10 +296,21 @@ public class AnimationExampleActivity extends FragmentActivity implements OnClic
             case R.id.btn_test_popup_window:
                 testPopupWindows(view);
                 break;
+            case R.id.btn_test_autofill:
+                testAutoFillOnEditText();
+                break;
             default:
                 break;
         }
 
+    }
+
+    /**
+     * 测试AutoFillManager的hook
+     */
+    private void testAutoFillOnEditText() {
+        Intent intent = new Intent(this, AutoFillTestActivity.class);
+        this.startActivity(intent);
     }
 
     /**
@@ -321,7 +334,7 @@ public class AnimationExampleActivity extends FragmentActivity implements OnClic
     private void testWindowManager() {
         WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         TextView tx = new TextView(getApplicationContext());
-        View myView = getLayoutInflater().inflate(R.layout.test, null);
+        View myView = getLayoutInflater().inflate(test, null);
         tx.setText(R.string.app_name);
         WindowManager.LayoutParams param = new WindowManager.LayoutParams();
         param.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
