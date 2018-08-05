@@ -45,6 +45,7 @@ import android.os.IBinder;
 import android.os.Parcelable;
 import android.os.RemoteException;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Singleton;
@@ -780,6 +781,9 @@ public class ProxyEnvironment {
             sendLoadResult(context, intent, packageName, false);
             return false;
         }
+
+        getSettingProvider(context);
+
         // Hook代理替换
         replacePackageManager(context);
         replaceWindowSession(context);
@@ -1198,7 +1202,13 @@ public class ProxyEnvironment {
                                     sb.append(Util.getCallStack(e));
                                     ReportManger.getInstance().onExceptionByLogService(hostContext, "", sb.toString(),
                                             ExceptionConstants.TJ_78730007);
-                                    throw new GPTProxyWmsException(message, e);
+
+                                    if (e instanceof RemoteException) { // 为便于开者捕获处理RemoteException，直接抛出。
+                                        throw e;
+                                    } else {
+                                        throw new GPTProxyWmsException(message, e);
+                                    }
+
                                 }
                                 return result;
                             }
@@ -1250,7 +1260,13 @@ public class ProxyEnvironment {
                                     sb.append(Util.getCallStack(e));
                                     ReportManger.getInstance().onExceptionByLogService(hostContext, "",
                                             sb.toString(), ExceptionConstants.TJ_78730016);
-                                    throw new GPTProxyNotificationException(message, e);
+
+                                    if (e instanceof RemoteException) { // 为便于开者捕获处理RemoteException，直接抛出。
+                                        throw e;
+                                    } else {
+                                        throw new GPTProxyNotificationException(message, e);
+                                    }
+
                                 }
                                 return result;
                             }
@@ -1329,13 +1345,22 @@ public class ProxyEnvironment {
                                     if (method.getName().equals("startService")
                                             && message.toString().contains
                                             ("com.baidu.android.gporter.stat.LogTraceService")) {
-                                        throw new GPTProxyAmsException(message, e);
+
+                                        if (e instanceof RemoteException) { // 为便于开者捕获处理RemoteException，直接抛出。
+                                            throw e;
+                                        } else {
+                                            throw new GPTProxyAmsException(message, e);
+                                        }
                                     }
                                     sb.append(Util.getCallStack(e));
                                     ReportManger.getInstance().onExceptionByLogService(context, "",
                                             sb.toString(), ExceptionConstants.TJ_78730005);
 
-                                    throw new GPTProxyAmsException(message, e);
+                                    if (e instanceof RemoteException) { // 为便于开者捕获处理RemoteException，直接抛出。
+                                        throw e;
+                                    } else {
+                                        throw new GPTProxyAmsException(message, e);
+                                    }
                                 }
                                 return result;
                             }
@@ -1784,7 +1809,7 @@ public class ProxyEnvironment {
      */
     private static boolean assertApkFile(final Context context, String packageName) {
         File apkFile = ApkInstaller.getInstalledApkFile(context, packageName);
-        boolean isApk = apkFile.isFile() && apkFile.getName().endsWith(ApkInstaller.APK_SUFFIX);
+        boolean isApk = apkFile != null && apkFile.isFile() && apkFile.getName().endsWith(ApkInstaller.APK_SUFFIX);
 
         if (!isApk) {
             String s = new String(apkFile.getPath() + " is not exist!!! on ProxyEnvironment.init");
@@ -2328,7 +2353,13 @@ public class ProxyEnvironment {
                                     sb.append(Util.getCallStack(e));
                                     ReportManger.getInstance().onExceptionByLogService(hostContext, "",
                                             sb.toString(), ExceptionConstants.TJ_78730006);
-                                    throw new GPTProxyPmsException(message, e);
+
+                                    if (e instanceof RemoteException) { // 为便于开者捕获处理RemoteException，直接抛出。
+                                        throw e;
+                                    } else {
+                                        throw new GPTProxyPmsException(message, e);
+                                    }
+
                                 }
                                 return result;
                             }
@@ -2343,6 +2374,24 @@ public class ProxyEnvironment {
                 if (DEBUG) {
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+
+    /**
+     * MIUI的Android8.0中使用Setting的Provider获取值时不能及时生效的问题。
+     * 插件无法有效兼容处理，所以在GPT框架中统一兼容。
+     *
+     * @param context Context
+     */
+    private static synchronized void getSettingProvider(Context context) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+                Settings.Global.getInt(context.getContentResolver(),
+                        android.provider.Settings.Global.AIRPLANE_MODE_ON);
+        } catch (Throwable e) {
+            if (DEBUG) {
+                e.printStackTrace();
             }
         }
     }
