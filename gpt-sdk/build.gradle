@@ -13,7 +13,7 @@ android {
     buildTypes {
         release {
             debuggable false
-            // GPT已准备对外开源,为方便定位问题,关闭相关代码混淆。
+            // GPT已准备对外开源,为方便定位问题,关闭相关代码混淆配置。
             minifyEnabled false
             // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
         }
