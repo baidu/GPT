@@ -82,7 +82,6 @@ dependencies {
 
 - 方法四:根据实际产品需求直接拷贝"gpt-sdk"的工程源码到对应项目工程中。
 
-
 ## 主要风险
 
 - GPT插件系统中的ActivityProxy和BroadcastReceiverProxy等设置了android:exported="true"的对外导出组件可能存在如下安全风险：
