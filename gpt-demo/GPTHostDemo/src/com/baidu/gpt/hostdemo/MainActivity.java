@@ -53,7 +53,10 @@ import com.baidu.android.gporter.util.Util;
 import com.harlan.animation.rmi.IClient;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.Map;
 
 import static com.baidu.gpt.hostdemo.Util.writeFile;
@@ -100,6 +103,8 @@ public class MainActivity extends FragmentActivity {
      * 正在安装插件标志
      */
     boolean isInstalling = false;
+
+    Map<String, String> classMap = new ArrayMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,6 +266,21 @@ public class MainActivity extends FragmentActivity {
                 }
             });
 
+            // TODO 主要Hook类对比方法的类名,后续如有新的类需要检查,直接在此按序添加即可。
+            // 下面几个替换类一样,默认对比IACTIVE_MANAGER_CLASS就行。
+            classMap.put(Constants.ACTIVE_MANAGER_NATIVE_CLASS, ActivityManagerNativeWorker.class.getName());
+            classMap.put(Constants.IACTIVE_MANAGER_CLASS, ActivityManagerNativeWorker.class.getName());
+            classMap.put(Constants.ACTIVE_MANAGER_CLASS, ActivityManagerNativeWorker.class.getName());
+
+            classMap.put(Constants.NOTIFICATION_MANAGER_NATIVE_CLASS,
+                    NotificationManagerNativeWorker.class.getName());
+            classMap.put(Constants.PACKAGE_MANAGER_CLASS, PackageManagerWorker.class.getName());
+            classMap.put(Constants.WINDOW_SESSION_CLASS, WindowSessionWorker.class.getName());
+            classMap.put(Constants.WIFI_MANAGER_CLASS, WifiManagerWorker.class.getName());
+            classMap.put(Constants.IALARM_MANAGERR_CLASS, AlarmManagerWork.class.getName());
+            classMap.put(Constants.SERVICE_MANAGER_CLASS, BinderWork.class.getName());
+            classMap.put(Constants.IMOUNT_SERVICE_CLASS, MountServiceWork.class.getName());
+
             // "Hook类方法对比"显示点击处理
             View hookCompare = mHeaderView.findViewById(R.id.hook_compare);
             hookCompare.setVisibility(View.VISIBLE);
@@ -269,22 +289,6 @@ public class MainActivity extends FragmentActivity {
                 @Override
                 public void onClick(View v) {
                     try {
-                        // TODO 主要Hook类对比方法的类名,后续如有新的类需要检查,直接在此按序添加即可。
-                        Map<String, String> classMap = new ArrayMap<String, String>();
-                        // 下面几个替换类一样,默认对比IACTIVE_MANAGER_CLASS就行。
-                        classMap.put(Constants.ACTIVE_MANAGER_NATIVE_CLASS, ActivityManagerNativeWorker.class.getName());
-                        classMap.put(Constants.IACTIVE_MANAGER_CLASS, ActivityManagerNativeWorker.class.getName());
-                        classMap.put(Constants.ACTIVE_MANAGER_CLASS, ActivityManagerNativeWorker.class.getName());
-
-                        classMap.put(Constants.NOTIFICATION_MANAGER_NATIVE_CLASS,
-                                NotificationManagerNativeWorker.class.getName());
-                        classMap.put(Constants.PACKAGE_MANAGER_CLASS, PackageManagerWorker.class.getName());
-                        classMap.put(Constants.WINDOW_SESSION_CLASS, WindowSessionWorker.class.getName());
-                        classMap.put(Constants.WIFI_MANAGER_CLASS, WifiManagerWorker.class.getName());
-                        classMap.put(Constants.IALARM_MANAGERR_CLASS, AlarmManagerWork.class.getName());
-                        classMap.put(Constants.SERVICE_MANAGER_CLASS, BinderWork.class.getName());
-                        classMap.put(Constants.IMOUNT_SERVICE_CLASS, MountServiceWork.class.getName());
-
                         Context hostContext = Util.getHostContext(MainActivity.this);
 
                         // 结果输出文件
@@ -330,6 +334,23 @@ public class MainActivity extends FragmentActivity {
                                     + "catch (Throwable e): e = " + e.toString());
                             e.printStackTrace();
                         }
+                    }
+                }
+            });
+
+            // "Hook类方法对比"显示点击处理
+            View androidPTest = mHeaderView.findViewById(R.id.androidp_test);
+            androidPTest.setVisibility(View.VISIBLE);
+            androidPTest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (String key : classMap.keySet()) {
+                        if (DEBUG) {
+                            Log.d(TAG, "public void onClick(View v): for (String key : calssMap.keySet()): key = "
+                                    + key + "; className = " + classMap.get(key));
+                        }
+                        testAndroidPMethod(key);
+                        testAndroidPMethod(classMap.get(key));
                     }
                 }
             });
@@ -400,6 +421,99 @@ public class MainActivity extends FragmentActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * 开始androidp方法调用测试
+     * @param className 目标类
+     */
+    private static void testAndroidPMethod(String className) {
+        try {
+            if (DEBUG) {
+                Log.d(TAG, "testAndroidPMethod(String className): className = "
+                        + className);
+            }
+            Class clazz = Class.forName(className);
+            Object newInstance = invokeClassInstance(clazz);
+            invokeMethod(newInstance, clazz);
+        } catch (Throwable throwable) {
+            if (DEBUG) {
+                Log.d(TAG, "It failed to instance the target class or interface!");
+            }
+        }
+    }
+
+    /**
+     * 获取目标反射类实例
+     * @param targetClass 目标类
+     * @return 目标实例
+     */
+    private static Object invokeClassInstance(Class targetClass) {
+
+        if (targetClass.isInterface()) {
+            return Proxy.newProxyInstance(targetClass.getClassLoader(), new Class[]{targetClass}, new InvocationHandler() {
+                @Override
+                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                    return null;
+                }
+            });
+        } else {
+            Constructor[] constructrosArray = targetClass.getConstructors();
+            Constructor targetConstructor = null;
+            int curLength = Integer.MAX_VALUE;
+            // 取出构造参数最少的构造函数
+            for (Constructor tmpCon : constructrosArray) {
+                if (curLength < tmpCon.getParameterTypes().length) {
+                    continue;
+                }
+                curLength = tmpCon.getParameterTypes().length;
+                targetConstructor = tmpCon;
+            }
+            Class<?>[] targetArgs = new Class[curLength];
+            for (int i = 0; i < curLength; i++) {
+                targetArgs[i] = null;
+            }
+            try {
+                targetConstructor.setAccessible(true);
+                return targetConstructor.newInstance(targetArgs);
+            } catch (Throwable throwable) {
+                Log.d(TAG, "It failed to construct the Instance!");
+                return null;
+            }
+        }
+    }
+
+    /**
+     * 反射方法
+     * @param targetInstance 目标类实例
+     * @param targetClass 目标类
+     */
+    private static void invokeMethod(Object targetInstance, Class targetClass) {
+        Method[] methods = targetClass.getMethods();
+        StringBuilder contentString = new StringBuilder();
+        for (Method method : methods) {
+            String methodName = method.getName();
+            contentString.append("\n").append(methodName);
+            Class<?>[] parameterTypes = method.getParameterTypes();
+            Class<?> parameterClass = null;
+            for (int index = 0; index < parameterTypes.length; index++) {
+                parameterClass = parameterTypes[index];
+                String parameterName = parameterClass.getName();
+                if (index == 0) {
+                    contentString.append(" ( ").append(parameterName);
+                } else if (index == parameterTypes.length) {
+                    contentString.append(" , ").append(parameterName).append(" ) \n");
+                } else {
+                    contentString.append(" , ").append(parameterName);
+                }
+            }
+            try {
+                method.invoke(targetInstance, parameterTypes);
+            } catch (Throwable throwable) {
+                // Do Nothing
+            }
+        }
+
     }
 
 }
