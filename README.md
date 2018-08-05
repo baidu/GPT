@@ -196,7 +196,6 @@ GPTPackageManager.getInstance(getActivity()).installBuildinApps();
 
 - AccountManager、GMS接口、Class.getInputStream()等暂不支持。
 
-
 ## 高级通信
 
 - 大部分插件通信都可以通过标准方法和指定插件包名,组件类名的Intent参数完成。例如:
