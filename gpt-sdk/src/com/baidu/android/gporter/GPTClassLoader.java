@@ -51,7 +51,6 @@ public class GPTClassLoader extends DexClassLoader {
         try {
             clazz = super.findClass(name);
         } catch (ClassNotFoundException e) {
-
         }
 
         if (clazz == null) {
