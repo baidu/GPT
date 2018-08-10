@@ -36,8 +36,8 @@ public class GPTClassLoader extends DexClassLoader {
      * @param dexPath            dexPath
      * @param optimizedDirectory optimizedDirectory
      * @param libraryPath        libraryPath
-     * @param parent             ClassLoader
-     * @param hostLoader         ClassLoader
+     * @param parent             ParentClassLoader
+     * @param hostLoader         HostClassLoader
      */
     public GPTClassLoader(String dexPath, String optimizedDirectory, String libraryPath, ClassLoader parent,
                           ClassLoader hostLoader) {
@@ -65,3 +65,4 @@ public class GPTClassLoader extends DexClassLoader {
         return clazz;
     }
 }
+
