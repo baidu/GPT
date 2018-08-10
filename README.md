@@ -393,6 +393,7 @@ TargetActivator.loadTarget(mContext, "com.cx.huanjisdk", new ITargetLoadedCallBa
 ## 如何贡献 ##
 - 新建分支
 - 代码修改
+- 提交
 
 
 
