@@ -391,7 +391,7 @@ TargetActivator.loadTarget(mContext, "com.cx.huanjisdk", new ITargetLoadedCallBa
 - 如果APK存在lib/armabi目录的so，则系统以32位兼容方式加载主程序，此时运行插件也跟主程序一样以32位兼容方式运行，所以此时插件中必须包含armabi 32位so目录。
 
 ## 如何贡献 ##
-- 代码:
+- 代码修改:
 
 
 
