@@ -15,6 +15,8 @@
  */
 package com.baidu.android.gporter;
 
+import com.baidu.android.gporter.util.Constants;
+
 import dalvik.system.DexClassLoader;
 
 /**
@@ -51,6 +53,9 @@ public class GPTClassLoader extends DexClassLoader {
         try {
             clazz = super.findClass(name);
         } catch (ClassNotFoundException e) {
+            if (Constants.DEBUG) {
+                e.printStackTrace();
+            }
         }
 
         if (clazz == null) {
