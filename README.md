@@ -111,7 +111,7 @@ dependencies {
 - 如下所示直接传入对应插件APK的文件路径即可,安装成功失败会有广播通知,具体可参考"GPTHostDemo"并查看"com.baidu.android.gporter.pm.GPTPackageManager"类的相关方法和参数说明。
 GPTPackageManager.getInstance(getApplicationContext()).installApkFile(filePath);
 
-## 测试启动
+## 启动测试
 
 - 支持插件包名和插件Intent组件,以及插件加载动画自定义和静默加载等多种不同形式的插件启动启动方法,具体可查看插件调用"com.baidu.android.gporter.api.TargetActivator"类的相关方法和参数说明。
 
