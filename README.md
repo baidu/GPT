@@ -394,6 +394,7 @@ TargetActivator.loadTarget(mContext, "com.cx.huanjisdk", new ITargetLoadedCallBa
 - 新建分支
 - 代码修改
 - 提交评审
+- 合入
 
 
 
