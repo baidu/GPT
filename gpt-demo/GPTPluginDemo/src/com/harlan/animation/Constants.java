@@ -24,7 +24,7 @@ package com.harlan.animation;
 public final class Constants {
 
     /**
-     * DEBUG 开关
+     * DEBUG 开关：默认为true
      */
     public static final boolean DEBUG = true;
 
