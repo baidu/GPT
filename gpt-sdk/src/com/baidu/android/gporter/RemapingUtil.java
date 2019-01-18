@@ -82,7 +82,7 @@ public final class RemapingUtil {
             return;
         }
 
-/*        if (targetActivity != null && targetActivity.endsWith(Constants.GPT_SUFFIX)) {
+        /**if (targetActivity != null && targetActivity.endsWith(Constants.GPT_SUFFIX)) {
             
              * 从 PrefrenceActivity 中传进来的可能是 GPT 结束的类名。 ApiDemos app/device admin
              * 测试用例
