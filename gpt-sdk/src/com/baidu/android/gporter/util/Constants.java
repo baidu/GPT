@@ -28,7 +28,7 @@ public final class Constants {
     /**
      * DEBUG 开关
      */
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
     /**
      * SDK的版本号 TODO 升级版本时需同步修改此值和脚本配置以保持一致。
      */
