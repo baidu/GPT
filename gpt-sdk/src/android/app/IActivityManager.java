@@ -298,6 +298,11 @@ public interface IActivityManager {
      * isTopOfTask
      */
     public boolean isTopOfTask(IBinder token);
+    
+    /**
+     * isTopOfTask
+     */
+    public boolean isTopOfTask(String pkg, IBinder token);
 
 }
 
