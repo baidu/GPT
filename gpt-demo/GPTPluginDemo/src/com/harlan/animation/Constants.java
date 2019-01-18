@@ -26,7 +26,7 @@ public final class Constants {
     /**
      * DEBUG 开关
      */
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
     /**
      * 构造方法,不实例化
