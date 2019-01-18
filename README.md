@@ -1,16 +1,16 @@
 # 项目Owner：刘海涛 
 
-## 讨论
+# 技术讨论
 - Hi：dffd001
 - QQ群：703661841
 
 - CSDN：[http://blog.csdn.net/dffd001](http://blog.csdn.net/dffd001)
 - 简书：[https://www.jianshu.com/u/2306ba8f1c59](https://www.jianshu.com/u/2306ba8f1c59)
 
-## 开源代码
-- 登录GitHub后面所示链接地址后直接Fork：[https://github.com/baidu/GPT](https://github.com/baidu/GPT)
+# 开源代码 
+- 登录GitHub帐号直接Fork后面项目地址：[https://github.com/baidu/GPT](https://github.com/baidu/GPT)
 
-# 项目名称
+# 项目简介
 
 ## GreedyPorter(GPT)插件系统
 
@@ -82,6 +82,9 @@ dependencies {
 
 - 方法四:根据实际产品需求直接拷贝"gpt-sdk"的工程源码到对应项目工程中。
 
+
+
+
 ## 插件校验
 
 - 插件校验和Android系统比较相似，默认采用签名一致的校验方式;主程序需添加对应实现类声明并可自定义控制校验过程如下所示。
@@ -111,7 +114,7 @@ dependencies {
 - 如下所示直接传入对应插件APK的文件路径即可,安装成功失败会有广播通知,具体可参考"GPTHostDemo"并查看"com.baidu.android.gporter.pm.GPTPackageManager"类的相关方法和参数说明。
 GPTPackageManager.getInstance(getApplicationContext()).installApkFile(filePath);
 
-## 测试
+## 启动插件
 
 - 支持插件包名和插件Intent组件,以及插件加载动画自定义和静默加载等多种不同形式的插件启动启动方法,具体可查看插件调用"com.baidu.android.gporter.api.TargetActivator"类的相关方法和参数说明。
 
@@ -201,6 +204,8 @@ GPTPackageManager.getInstance(getActivity()).installBuildinApps();
 - GPT插件系统中的ActivityProxy和BroadcastReceiverProxy等设置了android:exported="true"的对外导出组件可能存在如下安全风险：
 - 由于这类组件可接受外部输入参数：targetPackageName、targetClassName以便调起复杂可扩展的宿主插件具体组件，攻击者也可通过以上参数任意调用插件中的所有Activity、Service、Receiver等组件，并且能够传递intent参数。
 - 因此建议GPT的宿主和插件接入方都根据实际产品业务需求和具体宿主插件组件逻辑，增加对应白名单安全配置机制，以便对内部宿主插件中允许被外部调用的组件等增加白名单配置匹配和安全检查处理机制。
+
+
 
 ## 高级通信
 
@@ -377,7 +382,7 @@ TargetActivator.loadTarget(mContext, "com.cx.huanjisdk", new ITargetLoadedCallBa
 
 - 在64位设备上，对于插件系统有一定的影响，主要是安装和加载。
 
-- 注意:为了有效识别宿主和插件,宿主工程需要在"libs"目录下包含至少1个对应设备类型的so文件。
+- 注意:为有效识别宿主和插件,宿主工程需要在"libs"目录下包含至少1个对应设备类型的so文件。
 
 - 插件无法安装，插件系统报cpuabi不一致无法安装也是由于上述原因导致，比如Host没有so，插件只有armabi 32位的so，此时如果运行在64位设备上，则插件无法安装。
 
@@ -389,14 +394,5 @@ TargetActivator.loadTarget(mContext, "com.cx.huanjisdk", new ITargetLoadedCallBa
 - 如果APK中没有so目录，则系统按照默认配置64位加载主程序，此时按照上一条原则插件必须也是64位的。
 
 - 如果APK存在lib/armabi目录的so，则系统以32位兼容方式加载主程序，此时运行插件也跟主程序一样以32位兼容方式运行，所以此时插件中必须包含armabi 32位so目录。
-
-## 如何贡献 ##
-- 新建分支
-- 代码修改
-- 提交评审
-- 合入代码
-
-
-
 
 
