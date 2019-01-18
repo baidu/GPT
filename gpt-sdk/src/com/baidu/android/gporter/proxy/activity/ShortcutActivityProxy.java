@@ -64,10 +64,10 @@ public class ShortcutActivityProxy extends Activity {
 
         Intent newIntent = new Intent(getIntent());
         newIntent.setComponent(new ComponentName(info.packageName, info.className));
-        // 统计
+        // 统计添加
         ReportManger.getInstance().onPluginStartByShortcut(getApplicationContext(), info.packageName);
 
-        // 恢复category
+        // 恢复Category
         String[] cates = getIntent().getStringArrayExtra(EXTRA_KEY_TARGET_CATE);
         if (cates != null && cates.length > 0) {
             for (String cate : cates) {
