@@ -246,13 +246,14 @@ public class ActivityProxy extends ActivityGroup {
         GPTIntent lamIntent = new GPTIntent(super.getIntent());
         lamIntent.setClassName(mTargetPackageName, mTargetClassName);
         Window window = mLAM.startActivity(mTargetClassName, lamIntent);
+
         //window.setCallback(getCurrentActivity());
         // 和 GPTActivity.getWindow 相对应，都是使用proxy的 window。
         //JavaCalls.setField(getCurrentActivity(), "mWindow", getWindow());
         //setContentView(window.getDecorView());
 
         /**
-         * 替换icon和logo为目标插件的
+         * 替换icon和logo为目标插件
          */
         replaceActivityInfo(targetInfo);
 
@@ -296,7 +297,7 @@ public class ActivityProxy extends ActivityGroup {
             return;
         }
 
-        // ActvityGroup不入栈，不然launchMode找activity栈的时候会有问题。
+        // ActvityGroup不入栈，否则通过LaunchMode找Activity栈的时候会有问题。
         if (this.getParent() == null) {
             ProxyEnvironment.getInstance(mTargetPackageName).pushActivityToStack(this);
         }
