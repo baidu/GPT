@@ -192,7 +192,7 @@ public class GPTProcessService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
 
-        //  这个对 bind 方式不起作用
+        //  这个对bind方式不起作用
         return Service.START_NOT_STICKY;
     }
 
