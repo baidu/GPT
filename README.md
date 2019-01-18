@@ -388,7 +388,7 @@ TargetActivator.loadTarget(mContext, "com.cx.huanjisdk", new ITargetLoadedCallBa
 
 - 64位设备上运行策略如下:
 
-- 如果APK存在lib/arm64-v8a,也存在lib/armabi，则系统运行主程序是则按照64位程序运行;
+- 如果APK存在lib/arm64-v8a，也存在lib/armabi，则Android系统运行主程序是则按照64位程序运行;
 因为主程序存在64位代码则此时加载插件也需要64位代码，插件中必须包含lib/arm64-v8a的so，否则无法安装也无法运行。
 
 - 如果APK中没有so目录，则系统按照默认配置64位加载主程序，此时按照上一条原则插件必须也是64位的。
