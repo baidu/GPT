@@ -17,7 +17,7 @@ package com.baidu.android.gporter.stat;
 
 /**
  * 异常信息时，错误的ID定义
- * 一个catch，一个ID
+ * 一个ExceptionCatch，一个ID
  *
  * @author liuhaitao
  * @since 2017-01-19
