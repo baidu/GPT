@@ -42,11 +42,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    // TODO 非源码引入Release版AAR方法,可查看"GPT接入必读"和CSDN等相关说明。
+    // TODO 非源码引入Release版AAR方法,可查看"GPT接入必读"等相关说明。
     compile project(':gpt-sdk')
     // TODO GPT统计上报依赖,不影响GPT插件主体功能;外部使用可注掉,
     // 或参照HostApplication对应方法实现并设置GPT对应统计数据接口自定义处理上报策略即可。
     // compile project(':gpt-statistics')
 }
-
-
