@@ -29,7 +29,7 @@ import java.util.List;
 
 /**
  * PushManager
- * 注:Push相关测试,其它新产品可不关注。
+ * 注:Push相关测试,和具体产品功能相关,其它新产品根据实际情况可不关注。
  *
  * @author liuhaitao
  * @since 2017-02-21
