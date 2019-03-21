@@ -50,6 +50,7 @@ public final class AppSearchInvoker {
         try {
             Intent intent = new Intent();
             intent.setAction("android.intent.action.VIEW");
+            // 此为示例地址，可结合实际产品功能地址进行对应替换测试。
             Uri contentUrl = Uri.parse("http://m.baidu.com/app");
             intent.setData(contentUrl);
             ctx.startActivity(intent);
