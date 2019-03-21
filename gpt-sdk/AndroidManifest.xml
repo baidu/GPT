@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
-        <!-- gpt安装service，hostapp必须在manifest中声明此service，此service执行完会自动退出，运行在独立进程。 -->
+        <!-- gpt安装service，hostapp必须在manifest中声明此service，此service运行在独立进程，执行完会自动退出。 -->
         <service
             android:name="com.baidu.android.gporter.install.ApkInstallerService"
             android:exported="false"
