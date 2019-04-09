@@ -107,7 +107,7 @@ uploadArchives {
                 groupId POM_GROUP
                 description "GreedyPorter SDK"
             }
-// TODO 非源码引入Release版AAR方法,可查看"GPT接入必读"等相关说明。
+//  TODO 非源码引入Release版AAR方法,可查看"GPT接入必读"等相关说明。
         }
     }
 }
