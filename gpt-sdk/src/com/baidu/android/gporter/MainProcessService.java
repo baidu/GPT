@@ -228,7 +228,8 @@ public class MainProcessService extends Service {
         Object obj = Util.getHostMetaDataClassInstance(ctx, ISignatureVerify.MATA_DATA_VERIFY_CLASS);
         if (obj instanceof ISignatureVerify) {
             if (DEBUG) {
-                Log.d(TAG, "getHostSignatureVerifier(): host SignatureVerify class : " + obj.getClass().getName());
+                Log.d(TAG, "getHostSignatureVerifier(): host SignatureVerify class : "
+                        + obj.getClass().getName());
             }
             return (ISignatureVerify) obj;
         } else {
