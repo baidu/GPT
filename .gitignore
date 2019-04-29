@@ -13,7 +13,6 @@ output
 /issue.info
 
 .gradle
-/local.properties
 /.idea/workspace.xml
 /.idea/libraries
 /.idea
