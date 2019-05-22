@@ -27,9 +27,9 @@ import java.util.Set;
 
 /**
  * 插件组件信息
- * <p>
- * 写这个是为了封装成一个json string 放到 category里。为什么不用extra呢？
- * 用extra的话，因为我们在Activity的super.onCreate之前就会去取extra， 导致calssloader取的不正确
+ *
+ * 写这个是为了封装成一个json string 放到 category里。
+ * 只所以不用extra是因为用extra的话，我们在Activity的super.onCreate之前就会去取extra， 导致calssloader取的不正确。
  *
  * @author liuhaitao
  * @since 2015-3-3
