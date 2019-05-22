@@ -37,7 +37,7 @@ import com.baidu.android.gporter.util.Constants;
 import java.util.List;
 
 /**
- * 启动插件Component的Intent重映射工具
+ * 启动插件Component的Intent重新映射工具。
  *
  * @author liuhaitao
  * @since 2015-10-20
