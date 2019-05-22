@@ -32,8 +32,9 @@ import com.baidu.android.gporter.util.Constants;
 import com.baidu.android.gporter.util.Util;
 
 /**
- * 运行在主进程中。用于 gpt 独立进程中有些任务需要从主进程发起的时候,通知此service代替其处理。
- * <p>
+ * 运行在主进程中。
+ * 用于 gpt 独立进程中有些任务需要从主进程发起的时候,通知此service代替其进行处理。
+ *
  * 另外一个重要功能是 gpt进程和 host进程之间通过 aidl 进行接口调用。
  *
  * @author liuhaitao
