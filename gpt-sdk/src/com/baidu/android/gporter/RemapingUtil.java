@@ -222,7 +222,7 @@ public final class RemapingUtil {
             return;
         }
 
-        // 获取插件信息
+        // 获取GPT插件Package信息
         GPTPackageInfo gptPkgInfo = GPTPackageManager.getInstance(hostCtx).getPackageInfo(
                 targetMapping.getPackageName());
         if (gptPkgInfo == null) {
