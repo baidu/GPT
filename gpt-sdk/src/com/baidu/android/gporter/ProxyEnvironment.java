@@ -2496,7 +2496,7 @@ public class ProxyEnvironment {
             coastTime = currentTme - startTime;
         }
         timeLine.pluginLoadSucessTime = coastTime;
-        // For 统计，没异常就算插件启动成功
+        // 此处用作时长性能统计上报，没有异常后就算为插件启动成功。
         ReportManger.getInstance().onPluginLoadSucess(context, packageName, intent, coastTime);
         ReportManger.getInstance().onPluginTimeLine(context, packageName, timeLine);
         pluginTimeLineMap.remove(packageName);
