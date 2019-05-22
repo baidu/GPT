@@ -26,7 +26,7 @@ import dalvik.system.DexClassLoader;
 public class GPTClassLoader extends DexClassLoader {
 
     /**
-     * 宿主的ClassLoader
+     * 插件框架运行宿主的ClassLoader
      */
     private ClassLoader mHostClassLoader;
 
