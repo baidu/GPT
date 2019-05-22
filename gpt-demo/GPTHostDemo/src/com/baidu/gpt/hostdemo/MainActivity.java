@@ -266,7 +266,7 @@ public class MainActivity extends FragmentActivity {
                 }
             });
 
-            // TODO 主要Hook类对比方法的类名,后续如有新的类需要检查,直接在此按序添加即可。
+            // 主要Hook类对比方法的类名,后续如有新的类需要检查,直接在此按序添加即可。
             // 下面几个替换类一样,默认对比IACTIVE_MANAGER_CLASS就行。
             classMap.put(Constants.ACTIVE_MANAGER_NATIVE_CLASS, ActivityManagerNativeWorker.class.getName());
             classMap.put(Constants.IACTIVE_MANAGER_CLASS, ActivityManagerNativeWorker.class.getName());
