@@ -166,7 +166,7 @@ public class ProxyActivityCounter {
                 }
             }
         } catch (Exception e) {
-            // 因为用到了内部类，所以做catch处理，避免找不到时crash
+            // 因为用到了内部类，所以做catch处理，避免找不到时发生Crash。
             if (DEBUG) {
                 e.printStackTrace();
             }
