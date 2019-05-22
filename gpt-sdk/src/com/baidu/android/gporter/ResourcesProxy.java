@@ -31,7 +31,7 @@ import android.util.TypedValue;
 import java.io.InputStream;
 
 /**
- * 资源代理，创建的资源是这个对象，从而使得插件能够找到宿主的资源
+ * 资源代理：创建的资源是这个对象，从而使得插件能够找到宿主里的资源。
  *
  * @author liuhaitao
  * @since 2014年8月1日
