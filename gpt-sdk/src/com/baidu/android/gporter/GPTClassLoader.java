@@ -58,7 +58,7 @@ public class GPTClassLoader extends DexClassLoader {
             }
         }
 
-        // 如果在插件里没找到，则用宿主的查找。
+        // 如果在插件里没找到类，则用宿主的去查找。
         if (clazz == null) {
             clazz = mHostClassLoader.loadClass(name);
         }
