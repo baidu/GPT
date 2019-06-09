@@ -158,7 +158,7 @@ public class MainProcessService extends Service {
     /**
      * classname 为 {@link Remote} 的实现类。
      *
-     * @param className
+     * @param className 实现类参数
      * @return IBinder or null
      */
     public static IBinder getTargetInterface(String className) {
