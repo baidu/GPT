@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.baidu.gpt.hostdemo">
 
-    <!-- TODO 此处声明了很多备用权限,以便用户首次体验HostDemo时无需修改即可加载运行不同权限需求的插件。实际开发中用户可根据具体宿主、插件权限需求灵活增删对应权限。 -->
+    <!-- TODO 此处声明了很多备用权限,以便用户首次体验HostDemo时无需修改即可加载运行不同权限需求的插件。 -->
+    <!-- 实际开发中用户可根据具体宿主、插件权限需求灵活增删对应权限。 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
