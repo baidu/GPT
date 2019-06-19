@@ -40,7 +40,8 @@ public class MyApplication extends Application {
         Object base = JavaCalls.getField(this, "mBase");
 
         if (DEBUG) {
-            Log.d(TAG, "onCreate(): this = " + this + "; Object base = JavaCalls.getField(this, \"mBase\"): mBase=" + base);
+            Log.d(TAG, "onCreate(): this = " + this
+                    + "; Object base = JavaCalls.getField(this, \"mBase\"): mBase=" + base);
         }
 
         testBoolean();
