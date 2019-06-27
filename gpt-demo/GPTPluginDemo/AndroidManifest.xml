@@ -17,7 +17,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name">
 
-        <!--TODO value:true时插件和宿主运行在同一个进程,value:false时单独运行在gpt插件进程-->
+        <!--TODO value:true时插件和宿主运行在同一个进程，value:false时插件单独运行在gpt插件进程-->
         <meta-data
             android:name="gpt_union_process"
             android:value="true" />
