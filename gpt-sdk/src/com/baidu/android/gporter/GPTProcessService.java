@@ -36,6 +36,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 插件运行的独立进程守护Service
+ * 可扩展进行统一进程管理
  *
  * @author liuhaitao
  * @since 2014年12月22日
