@@ -39,7 +39,8 @@ public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (DEBUG) {
-            Log.d(TAG, "onReceive(Context context, Intent intent): context=" + context.toString() + "; intent=" + intent.toString());
+            Log.d(TAG, "onReceive(Context context, Intent intent): context="
+                    + context.toString() + "; intent=" + intent.toString());
         }
     }
 }
