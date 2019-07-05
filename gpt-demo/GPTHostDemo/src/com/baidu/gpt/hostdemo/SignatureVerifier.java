@@ -43,9 +43,11 @@ public class SignatureVerifier implements ISignatureVerify {
     public boolean checkSignature(String packageName, boolean isReplace, Signature[] signatures, Signature[] newSignatures) {
         if (DEBUG) {
             Log.d(TAG, "checkSignature(String packageName, boolean isReplace, Signature[] signatures, Signature[] newSignatures):\n"
-                    + "packageName=" + packageName + "; isReplace=" + isReplace + "; signatures=" + signatures + "; newSignatures=" + newSignatures);
+                    + "packageName=" + packageName + "; isReplace=" + isReplace
+                    + "; signatures=" + signatures + "; newSignatures=" + newSignatures);
         }
-        // 自定义签名策略验证合法时需要返回true,否则返回false。
+        // 自定义签名策略，验证合法时需要返回true,验证不合法则需返回false。
+        // 测试时可默认返回true，否则不能安装插件。
         return true;
     }
 
