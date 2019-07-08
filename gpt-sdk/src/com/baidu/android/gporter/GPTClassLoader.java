@@ -59,6 +59,9 @@ public class GPTClassLoader extends DexClassLoader {
         }
 
         // 如果在插件的ClassLoader里没有找到类，则用宿主mHostClassLoader的去查找。
+        // 插件可以采用编译时依赖，但真正打包时去除的方式，来实现如下相关功能：
+        // (1)插件复用宿主版本的代码逻辑；
+        // (2)插件的功能逻辑保持和宿主对应版本一致，而不再出现同一宿主中不同插件功能逻辑不一致的情况。
         if (clazz == null) {
             clazz = mHostClassLoader.loadClass(name);
         }
