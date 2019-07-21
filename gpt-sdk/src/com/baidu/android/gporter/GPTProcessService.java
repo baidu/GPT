@@ -126,7 +126,7 @@ public class GPTProcessService extends Service {
 
         @Override
         public boolean exitProxy(String packageName, boolean force) throws RemoteException {
-            if (force) { // 强制退出插件时，把进程杀了。
+            if (force) { // 当强制退出插件时，就把进程杀掉。
                 android.os.Process.killProcess(android.os.Process.myPid());
             }
             boolean b = ProxyEnvironment.exitProxy(packageName, force);
