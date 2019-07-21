@@ -30,6 +30,7 @@ import java.util.Set;
  *
  * 写这个是为了封装成一个json string 放到 category里。
  * 只所以不用extra是因为用extra的话，我们在Activity的super.onCreate之前就会去取extra， 导致calssloader取的不正确。
+ * 部分内外部扩展数据信息，可以通过此数据和相关读取方法进行灵活扩展投传处理。
  *
  * @author liuhaitao
  * @since 2015-3-3
