@@ -37,7 +37,7 @@ import com.baidu.android.gporter.util.Constants;
 import java.util.List;
 
 /**
- * 启动插件Component的Intent重新映射工具。
+ * 启动插件Component的Intent重新映射工具类。
  *
  * @author liuhaitao
  * @since 2015-10-20
@@ -90,7 +90,7 @@ public final class RemapingUtil {
             targetActivity = targetActivity.substring(0, (targetActivity.length() - Constants.GPT_SUFFIX.length()));
         }*/
 
-        // 获取不到activity info，说明不是插件的Activity，不需要重映射
+        // 获取不到Activity Info时，说明其不是插件的Activity，就不需要重映射。
         if (targetMapping.getActivityInfo(targetActivity) == null) {
             return;
         }
@@ -222,7 +222,7 @@ public final class RemapingUtil {
             return;
         }
 
-        // 获取GPT插件Package信息
+        // 获取GPT插件的Package信息
         GPTPackageInfo gptPkgInfo = GPTPackageManager.getInstance(hostCtx).getPackageInfo(
                 targetMapping.getPackageName());
         if (gptPkgInfo == null) {
