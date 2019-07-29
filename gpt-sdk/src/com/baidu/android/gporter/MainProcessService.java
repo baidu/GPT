@@ -44,7 +44,7 @@ public class MainProcessService extends Service {
     /**
      * DEBUG 开关
      */
-    public static final boolean DEBUG = true & Constants.DEBUG;
+    public static final boolean DEBUG = false & Constants.DEBUG;
     /**
      * TAG
      */
