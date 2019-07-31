@@ -39,7 +39,8 @@ import java.io.InputStream;
 public class ResourcesProxy extends Resources {
 
     /**
-     * 宿主的Resources
+     * 宿主的Resources对象引用，
+     * 方便在插件找不到资源时，可查找并共享复用宿主的资源文件。
      */
     private Resources mHostResources = null;
 
