@@ -1,4 +1,4 @@
-# 项目Owner：刘海涛 
+# Owner：刘海涛 
 
 # 技术讨论
 - Hi：dffd001
@@ -20,7 +20,7 @@
 
 - 目前仅百度手机助手已成功接过的插件数目60+。
 
-- 更多内容可同步关注http://blog.csdn.net/dffd001 和 https://www.jianshu.com/u/2306ba8f1c59 后续文章更新。
+- 更多内容可同步关注http://blog.csdn.net/dffd001 和 https://www.jianshu.com/u/2306ba8f1c59 相关技术更新。
 
 - 也可参考源码工程"GPT接入必读"和相关代码注释说明。
 
