@@ -41,7 +41,7 @@ public class MyApplication extends Application {
 
         if (DEBUG) {
             Log.d(TAG, "onCreate(): this = " + this
-                    + "; Object base = JavaCalls.getField(this, \"mBase\"): mBase=" + base);
+                    + "\n ; Object base = JavaCalls.getField(this, \"mBase\"): mBase=" + base);
         }
 
         testBoolean();
@@ -55,7 +55,7 @@ public class MyApplication extends Application {
         boolean b = getResources().getBoolean(R.bool.test_boolean);
         if (DEBUG) {
             Log.d(TAG, "testBoolean(): this=" + this + "; getResources()=" + getResources()
-                    + "; boolean b = getResources().getBoolean(R.bool.test_boolean): b=" + b);
+                    + "\n ; boolean b = getResources().getBoolean(R.bool.test_boolean): b=" + b);
         }
 
     }
