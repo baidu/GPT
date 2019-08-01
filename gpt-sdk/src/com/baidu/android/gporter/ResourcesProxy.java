@@ -43,6 +43,8 @@ public class ResourcesProxy extends Resources {
      *
      * 方便在插件找不到资源时，可查找并共享复用宿主的资源文件。
      *
+     * 部分宿主资源引用，需要进行public。
+     *
      */
     private Resources mHostResources = null;
 
