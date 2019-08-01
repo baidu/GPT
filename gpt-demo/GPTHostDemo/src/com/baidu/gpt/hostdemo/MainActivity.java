@@ -291,7 +291,7 @@ public class MainActivity extends FragmentActivity {
                     try {
                         Context hostContext = Util.getHostContext(MainActivity.this);
 
-                        // 结果输出文件
+                        // 结果输出文件：Hook类方法对比结果，会自动保存到对应终端设备信息命名的文件中，方便直接进行对比分析。
                         File androidClassMethodFile = new File(hostContext.getExternalFilesDir(null)
                                 + Build.MODEL + "_" + Build.BRAND + "_" + Build.MANUFACTURER + "_"
                                 + Build.VERSION.RELEASE + "_" + Build.VERSION.SDK_INT + "_"
