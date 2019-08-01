@@ -101,7 +101,7 @@ public class MainProcessService extends Service {
 
         super.onCreate();
 
-        // 使用主线程进行处理
+        // 此处使用的是主线程进行处理
         mServiceHandler = new ServiceHandler(getMainLooper());
     }
 
