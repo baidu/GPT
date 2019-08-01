@@ -6,6 +6,8 @@
 # TODO 注意:执行本文件前先检查对应路径下的build.gradle的依赖配置。
 # TODO 注意:对外开源同步代码时,可直接删改本文件。
 
+
 rm -rf ./output/
+
 chmod +x ./gradlew
  ./gradlew :gpt-sdk:buildSdk uploadArchives
