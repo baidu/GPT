@@ -123,6 +123,7 @@ public class ApkCompatLiteParser {
 
         @Override
         public String toString() {
+            // 使用方咨询，此处补充说明可根据需求扩增新的APK包可获取数据信息
             return name + "@" + packageName + "@" + versionCode + "@" + versionName + "@" + minSdk;
         }
 
