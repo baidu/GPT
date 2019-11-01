@@ -281,6 +281,7 @@ public class MainActivity extends FragmentActivity {
             classMap.put(Constants.SERVICE_MANAGER_CLASS, BinderWork.class.getName());
             classMap.put(Constants.IMOUNT_SERVICE_CLASS, MountServiceWork.class.getName());
 
+            // TODO 使用方新系统兼容测试方法，可参考并在此处进行对应功能逻辑添加。
             // "Hook类方法对比"显示点击处理
             View hookCompare = mHeaderView.findViewById(R.id.hook_compare);
             hookCompare.setVisibility(View.VISIBLE);
