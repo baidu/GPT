@@ -44,6 +44,7 @@ public class HostApplication extends Application {
         super.onCreate();
 
         // 设置GPT统计上报具体逻辑实现类,不影响GPT插件框架的主体功能
+        // 注：此部分依赖统计SDK，开源时因需要对应服务平台支持，所以先移除，使用方有问题需要可单独咨询沟通。
         // TODO 不同产品接入使用时可直接注掉、或者参照下面方法实现并设置GPT对应统计数据接口自定义处理策略类即可。
 //         ReportManger.getInstance().setInstallReport(new DefaultInstallReport());
 //         ReportManger.getInstance().setLoadReprot(new DefaultLoadReport());
