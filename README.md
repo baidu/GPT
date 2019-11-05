@@ -377,8 +377,8 @@ TargetActivator.loadTarget(mContext, "com.cx.huanjisdk", new ITargetLoadedCallBa
 ## 宿主和插件在64位设备上加载so问题 ##
 
 - Android的64位和32位运行分析可参考下述相关文章:
-[http://blog.csdn.net/dffd001/article/details/79265028](http://blog.csdn.net/dffd001/article/details/79265028)或
-[https://www.jianshu.com/p/393f806f1348](https://www.jianshu.com/p/393f806f1348)
+[http://blog.csdn.net/dffd001/article/details/79265028](http://blog.csdn.net/dffd001/article/details/79265028)
+或[https://www.jianshu.com/p/393f806f1348](https://www.jianshu.com/p/393f806f1348)
 
 - 在64位设备上，对于插件系统有一定的影响，主要是安装和加载。
 
