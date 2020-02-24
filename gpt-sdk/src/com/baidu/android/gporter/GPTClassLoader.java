@@ -64,6 +64,7 @@ public class GPTClassLoader extends DexClassLoader {
         // (2)插件的功能逻辑保持和宿主对应版本一致，而不再出现同一宿主中不同插件功能逻辑不一致的情况；
         // (3)插件、宿主都引入复用的公共第三方库，也可通过类似方法，实现只在宿主中添加一份库文件,
         //    而无需所有插件都重复引入库文件,从而实现公共库复用依赖的同时，更能有效缩减冗余代码和保持宿主、插件功能逻辑一致性。
+        // (4)同步用户反馈问题，如想作到插件类ClassLoader的完全安全隔离，则只需注掉下面的HostClassLoader复用查找机制即可。
         if (clazz == null) {
             clazz = mHostClassLoader.loadClass(name);
         }
