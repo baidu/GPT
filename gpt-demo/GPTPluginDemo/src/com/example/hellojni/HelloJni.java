@@ -19,7 +19,8 @@ package com.example.hellojni;
  * HelloJni
  *
  * @author liuhaitao
- * @since 2014-04-21
+ * @since 2020-02-25
+ * 用户反馈的JNI使用测试问题，可以参考此处进行。
  */
 public class HelloJni {
     /* A native method that is implemented by the
